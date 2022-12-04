@@ -11,14 +11,14 @@ public abstract class Day {
     protected Scanner Reader;
     protected String answer;
 
-    public Day(){
+    protected void openScanner(String filePath){
         try {
-            URL res = getClass().getClassLoader().getResource("day1/main.txt");
+            URL res = getClass().getClassLoader().getResource(filePath);
             File file = Paths.get(res.toURI()).toFile();
             String path = file.getAbsolutePath();
             System.out.println(path);
 
-            Scanner Reader = new Scanner((file));
+            Reader = new Scanner((file));
         }
         catch(URISyntaxException | FileNotFoundException ex){
             System.out.println("Error has occurred!");
@@ -29,4 +29,6 @@ public abstract class Day {
     protected void printAnswer(){
         System.out.println(this.answer);
     }
+
+    protected abstract void makeTask();
 }
