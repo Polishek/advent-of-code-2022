@@ -17,7 +17,7 @@ public class Day1 {
 //        file = new File("resources/test.txt");
 
         try {
-            URL res = getClass().getClassLoader().getResource("main.txt");
+            URL res = getClass().getClassLoader().getResource("day1/main.txt");
             file = Paths.get(res.toURI()).toFile();
             String path = file.getAbsolutePath();
             System.out.println(path);
