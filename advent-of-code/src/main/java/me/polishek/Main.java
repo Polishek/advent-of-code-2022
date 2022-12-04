@@ -2,7 +2,8 @@ package me.polishek;
 
 public class Main {
     public static void main(String[] args) {
-        Day day1 = new Day1();
-        day1.makeTask();
+//        Day1 day = new Day1();
+        Day day2 = new Day2();
+        day2.printAnswer();
     }
 }

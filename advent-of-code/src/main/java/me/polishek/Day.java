@@ -27,7 +27,8 @@ public abstract class Day {
     }
 
     protected void printAnswer(){
-        System.out.println(this.answer);
+        makeTask();
+        System.out.println(getClass().getName() + ": " + answer);
     }
 
     protected abstract void makeTask();
