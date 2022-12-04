@@ -6,23 +6,27 @@ import java.net.URL;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class Day1 {
+public class Day1 extends Day{
 
-    private String answer;
-    private File file;
+//    private String answer;
+//    private File file;
 
     private List<Integer> caloriesList;
-    public Day1() {
+
+    public Day1(){
+        openScanner("day1/main.txt");
+    }
+    public void makeTask() {
 
 //        file = new File("resources/test.txt");
 
-        try {
-            URL res = getClass().getClassLoader().getResource("day1/main.txt");
-            file = Paths.get(res.toURI()).toFile();
-            String path = file.getAbsolutePath();
-            System.out.println(path);
-
-            Scanner Reader = new Scanner((file));
+//        try {
+//            URL res = getClass().getClassLoader().getResource("day1/main.txt");
+//            file = Paths.get(res.toURI()).toFile();
+//            String path = file.getAbsolutePath();
+//            System.out.println(path);
+//
+//            Scanner Reader = new Scanner((file));
 
             caloriesList = new ArrayList<>();
             caloriesList.add(0);
@@ -48,14 +52,17 @@ public class Day1 {
                 }
             }
             Reader.close();
-        }
-        catch(URISyntaxException | FileNotFoundException ex){
-            System.out.println("Error has occurred!");
-            ex.printStackTrace();
-        }
+//        }
+//        catch(URISyntaxException | FileNotFoundException ex){
+//            System.out.println("Error has occurred!");
+//            ex.printStackTrace();
+//        }
 
         Collections.sort(caloriesList, Collections.reverseOrder());
 
-        System.out.println("Day1: [" + caloriesList.get(0) + "] [" + (caloriesList.get(0) + caloriesList.get(1) + caloriesList.get(2)) + "]\n");
+//        System.out.println("Day1: [" + caloriesList.get(0) + "] [" + (caloriesList.get(0) + caloriesList.get(1) + caloriesList.get(2)) + "]\n");
+        answer = "Day1: [" + caloriesList.get(0) + "] [" + (caloriesList.get(0) + caloriesList.get(1) + caloriesList.get(2)) + "]\n";
+
+        printAnswer();
     }
 }
