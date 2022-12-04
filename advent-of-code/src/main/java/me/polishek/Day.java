@@ -27,6 +27,7 @@ public abstract class Day {
     }
 
     protected void printAnswer(){
+        makeTask();
         System.out.println(this.answer);
     }
 
