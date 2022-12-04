@@ -43,36 +43,90 @@ public class Day2 extends Day {
         openScanner("day2/main.txt");
     }
 
-    public void makeTask(){
+    @Override
+    protected void makeTask(){
 
-        int opponent = 0, me = 0, myTotalScore = 0;
+        int myTotalScore = 0;
+
+//======================= TASK 1 =======================
+//        int opponent = 0, me = 0;
+//        int lines = 0, wins = 0, losts = 0, draws = 0;
+//
+//        while(Reader.hasNextLine()){
+//            String[] line = Reader.nextLine().split(" ");
+//            lines++;
+//            switch(line[0]){
+//                case "A" -> opponent = 1;   // Rock
+//                case "B" -> opponent = 2;   // Paper
+//                case "C" -> opponent = 3;   // Scissors
+//            }
+//
+//            switch(line[1]){
+//                case "X" -> me = 1; // Rock
+//                case "Y" -> me = 2; // Paper
+//                case "Z" -> me = 3; // Scissors
+//            }
+//
+//            if((line[0].equals("A") && line[1].equals("Y")) || (line[0].equals("B") && line[1].equals("Z")) || (line[0].equals("C") && line[1].equals("X"))) { // I win
+//                myTotalScore += 6 + me;
+//                wins++;
+//            } else if (opponent == me) { // It's a draw
+//                myTotalScore += 3 + me;
+//                draws++;
+//            }
+//            else { // I lose
+//                myTotalScore += me;
+//                losts++;
+//            }
+//        }
+//
+//        System.out.println("Lines: " + lines +"\n" +
+//                "Wins: " + wins + "\n" +
+//                "Draws: " + draws + "\n" +
+//                "Losts:" + losts +"\n" +
+//                "Total games: " + (wins + losts + draws) );
+
+//======================= TASK 2 =======================
+
+        int figure = 0, result = 0;
 
         while(Reader.hasNextLine()){
             String[] line = Reader.nextLine().split(" ");
 
             switch(line[0]){
-                case "A" -> opponent = 1;
-                case "B" -> opponent = 2;
-                case "C" -> opponent = 3;
+                case "A" -> figure = 1;   // Rock
+                case "B" -> figure = 2;   // Paper
+                case "C" -> figure = 3;   // Scissors
             }
 
             switch(line[1]){
-                case "X" -> me = 1;
-                case "Y" -> me = 2;
-                case "Z" -> me = 3;
+                case "X" -> result = 1; // lose
+                case "Y" -> result = 2; // draw
+                case "Z" -> result = 3; // win
             }
 
-            if(opponent < me){
-                myTotalScore += 6 + me;
-            } else if (opponent == me) {
-                myTotalScore += 3 + me;
+            if(result == 2) { // It's a draw
+                myTotalScore += 3 + figure;
+            } else if (result == 3) { // It's a win
+                if(figure == 3) // Opponent gave Scissors
+                    myTotalScore += 6 + 1;
+                else if (figure == 2) // Opponent gave Paper
+                    myTotalScore += 6 + 3;
+                else  // Opponent gave Rock
+                    myTotalScore += 6 + 2;
             }
-            else {
-                myTotalScore += me;
+            else { // I lose
+                if(figure == 3) // Opponent gave Scissors
+                    myTotalScore += 2;
+                else if (figure == 2) // Opponent gave Paper
+                    myTotalScore +=  1;
+                else  // Opponent gave Rock
+                    myTotalScore += 3;
             }
         }
+
         Reader.close();
-        System.out.println("My points: " + myTotalScore);
+
         answer = Integer.toString(myTotalScore);
     }
 }
