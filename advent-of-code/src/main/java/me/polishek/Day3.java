@@ -7,7 +7,7 @@ import java.util.SortedSet;
 public class Day3 extends Day {
 
     private int sumOfPriorities = 0;
-    public Day3(){ openScanner("day3/main.txt"); }
+    public Day3(){ openScanner("day3/test.txt"); }
     @Override
     protected void makeTask() {
         Set<Character> characterSet = new HashSet<>();
@@ -35,7 +35,15 @@ public class Day3 extends Day {
     }
 
     private int sumOfPriorities(Set<Character> set){
-        set.forEach(character -> sumOfPriorities += character >= 97 ? character - 96 : character - 38);
+        set.forEach(character -> {
+            if(character >= 97){
+                sumOfPriorities += character - 96;
+            }
+            else {
+                sumOfPriorities += character - 38;
+            }
+//            sumOfPriorities += (character >= 97) ? character - 96 : character - 38;
+            });
 
         return sumOfPriorities;
     }
