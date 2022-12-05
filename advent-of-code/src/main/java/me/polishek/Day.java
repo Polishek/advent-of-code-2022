@@ -28,6 +28,7 @@ public abstract class Day {
 
     protected void printAnswer(){
         makeTask();
+        Reader.close();
         System.out.println(getClass().getName() + ": " + answer);
     }
 
