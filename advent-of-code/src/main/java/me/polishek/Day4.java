@@ -47,13 +47,16 @@ public class Day4 extends Day{
             line = line.substring(line.indexOf('-') + 1);
             int secondSectionRight = Integer.parseInt(line);
 
-            if((firstSectionLeft < secondSectionLeft && firstSectionRight < secondSectionRight) ||
-                    (firstSectionLeft > secondSectionLeft && firstSectionRight > secondSectionRight)){
+            if((firstSectionLeft < secondSectionLeft && firstSectionRight < secondSectionRight && firstSectionRight < secondSectionLeft) ||
+                    (firstSectionLeft > secondSectionLeft && firstSectionRight > secondSectionRight && secondSectionRight < firstSectionLeft)) {
+                continue;
+            }
+            else{
                 listOfSectionPairs.add(line);
                 assignmentPair++;
             }
         }
-        
+
         System.out.println(listOfSectionPairs.size());
         answer = Integer.toString(assignmentPair);
     }
