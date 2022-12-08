@@ -1,18 +1,22 @@
 package me.polishek;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.SortedSet;
+import java.util.*;
 
 public class Day3 extends Day {
 
     private int sumOfPriorities = 0;
-    public Day3(){ openScanner("day3/test.txt"); }
+
+    private final List<Character> characterSet;
+    public Day3(){
+        openScanner("day3/main.txt");
+        characterSet = new ArrayList<>();
+    }
+
     @Override
     protected void makeTask() {
-        Set<Character> characterSet = new HashSet<>();
 
         while (Reader.hasNextLine()){
+            Set<Character> rucksackSet = new HashSet<>();
             String line = Reader.nextLine();
             int half = line.length()/2;
             String firstCompartment = line.substring(0, half);
@@ -24,24 +28,30 @@ public class Day3 extends Day {
                 for(int j = 0; j < half; j++){
                     char secondCharacter = secondCompartment.charAt(j);
                     if(firstCharacter == secondCharacter) {
-                        characterSet.add(firstCharacter);
+                        rucksackSet.add(firstCharacter);
 //                        System.out.println("Added: " + firstCharacter);
                     }
                 }
             }
+
+            characterSet.addAll(rucksackSet);
+
         }
 
         answer = Integer.toString(sumOfPriorities(characterSet));
     }
 
-    private int sumOfPriorities(Set<Character> set){
+    private int sumOfPriorities(List<Character> set){
         set.forEach(character -> {
             if(character >= 97){
                 sumOfPriorities += character - 96;
+                System.out.println(character - 96 + " (" + character + ")");
             }
             else {
                 sumOfPriorities += character - 38;
+                System.out.println(character - 38 + " (" + character + ")");
             }
+
 //            sumOfPriorities += (character >= 97) ? character - 96 : character - 38;
             });
 
