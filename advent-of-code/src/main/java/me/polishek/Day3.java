@@ -14,22 +14,50 @@ public class Day3 extends Day {
 
     @Override
     protected void makeTask() {
+// ================ TASK 1 ================
+//        while (Reader.hasNextLine()){
+//            Set<Character> rucksackSet = new HashSet<>();
+//            String line = Reader.nextLine();
+//            int half = line.length()/2;
+//            String firstCompartment = line.substring(0, half);
+//            String secondCompartment = line.substring(half);
+//
+//            for(int i = 0; i < half; i++){
+//                char firstCharacter = firstCompartment.charAt(i);
+//
+//                for(int j = 0; j < half; j++){
+//                    char secondCharacter = secondCompartment.charAt(j);
+//                    if(firstCharacter == secondCharacter) {
+//                        rucksackSet.add(firstCharacter);
+////                        System.out.println("Added: " + firstCharacter);
+//                    }
+//                }
+//            }
+//
+//            characterSet.addAll(rucksackSet);
+//
+//        }
 
+// ================ TASK 2 ================
         while (Reader.hasNextLine()){
             Set<Character> rucksackSet = new HashSet<>();
-            String line = Reader.nextLine();
-            int half = line.length()/2;
-            String firstCompartment = line.substring(0, half);
-            String secondCompartment = line.substring(half);
+            String firstLine = Reader.nextLine();
+            String secondLine = Reader.nextLine();
+            String thirdLine = Reader.nextLine();
 
-            for(int i = 0; i < half; i++){
-                char firstCharacter = firstCompartment.charAt(i);
+            for(int i = 0; i < firstLine.length(); i++){
+                char firstCharacter = firstLine.charAt(i);
 
-                for(int j = 0; j < half; j++){
-                    char secondCharacter = secondCompartment.charAt(j);
+                for(int j = 0; j < secondLine.length(); j++){
+                    char secondCharacter = secondLine.charAt(j);
                     if(firstCharacter == secondCharacter) {
-                        rucksackSet.add(firstCharacter);
-//                        System.out.println("Added: " + firstCharacter);
+                        for(int k = 0; k < thirdLine.length(); k++){
+                            char thirdCharacter = thirdLine.charAt(k);
+                            if (secondCharacter == thirdCharacter){
+                                rucksackSet.add(firstCharacter);
+//                              System.out.println("Added: " + firstCharacter);
+                            }
+                        }
                     }
                 }
             }
