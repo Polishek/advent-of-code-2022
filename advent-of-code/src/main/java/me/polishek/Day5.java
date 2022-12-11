@@ -46,7 +46,7 @@ public class Day5 extends Day {
 
         for (int i = 0; i < containersList.size(); i++){
             System.out.println(containersList.get(i).get(containersList.get(i).size() - 1));
-        }g
+        }
 
         answer = Arrays.toString(containersList.toArray());
     }
